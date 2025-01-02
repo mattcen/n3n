@@ -34,6 +34,7 @@
 #   -it \
 #   --name=n3n-supernode \
 #   -p7654:7654/udp \
+#   -p7654:7654/tcp \
 #   -v "$PWD"/n3n:/etc/n3n/ \
 #   --entrypoint=/n3n-supernode \
 #   n3n start -vvvv
@@ -63,6 +64,7 @@ COPY --from=builder /n3n/apps/n3n-edge /n3n-edge
 COPY --from=builder /n3n/apps/n3n-supernode /n3n-supernode
 
 EXPOSE 7654/udp
+EXPOSE 7654/tcp
 
 VOLUME [ "/etc/n3n" ]
 ENTRYPOINT ["/n3n-edge"]
